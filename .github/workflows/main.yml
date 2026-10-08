@@ -1,4 +1,4 @@
-name: Build BeastMode Kernel
+name: Build BeastMode AnyKernel3
 
 on:
   workflow_dispatch:
@@ -7,23 +7,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Scarica i tuoi file modificati
         uses: actions/checkout@v4
 
-      - name: Installa Strumenti di Compilazione Linux
-        run: |
-          sudo apt update
-          sudo apt install -y bc build-essential python3 git gcc-aarch64-linux-gnu libssl-dev libncurses5-dev bison flex libelf-dev
-
-      - name: Scarica la Toolchain Clang di Google
-        run: |
-          git clone --depth=1 https://googlesource.com clang-google
-
-      - name: Impacchetta AnyKernel3
+      - name: Crea lo ZIP per TWRP
         run: |
           zip -r AnyKernel3-BeastMode.zip ./* -x "*.yml" -x "*.md" -x ".git*"
           
-      - name: Carica lo ZIP pronto per TWRP
+      - name: Sforna lo ZIP Scaricabile
         uses: actions/upload-artifact@v4
         with:
           name: AnyKernel3-BeastMode
