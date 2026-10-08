@@ -13,7 +13,7 @@ jobs:
       - name: Installa Strumenti di Compilazione Linux
         run: |
           sudo apt update
-          sudo apt install -y bc build-essential python3 git clink gcc-aarch64-linux-gnu libssl-dev libncurses5-dev bison flex libelf-dev
+          sudo apt install -y bc build-essential python3 git gcc-aarch64-linux-gnu libssl-dev libncurses5-dev bison flex libelf-dev
 
       - name: Scarica la Toolchain Clang di Google
         run: |
